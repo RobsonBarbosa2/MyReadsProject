@@ -174,7 +174,7 @@ render(){
         <div className="open-search">
 
             <Link
-              to="/search"
+              to="/Search"
               className="add-contact"
             >Add a book</Link>
         </div>

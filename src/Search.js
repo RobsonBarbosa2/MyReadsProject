@@ -4,8 +4,9 @@ import escapeRegExp from 'escape-string-regexp'
 import sortBy from 'sort-by'
 import {Link} from 'react-router-dom'
 import { BrowserRouter, Route } from 'react-router-dom'
+import * as BooksAPI from './BooksAPI'
 
-class ListBooks extends Component {
+class Search extends Component {
   static PropTypes = {
     books: PropTypes.array.isRequired
 
@@ -28,17 +29,9 @@ render(){
     const {query} = this.state
 
 
-    let showingBooks
-    if(query){
-    const match = new RegExp(escapeRegExp(query), 'i')
-      showingBooks = books.filter((book) => match.test(book.title))
-    }else{
-      showingBooks = books
-    }
-
     return (
       <div>
-        {showingBooks.length}
+      
         <div className="search-books">
           <div className="search-books-bar">
             <Link
@@ -60,12 +53,7 @@ render(){
                 value={query}
                 onChange={(event) => this.updateQuery(event.target.value)}/>
 
-                {showingBooks.length !== books.length && (
-                  <div>
-                    <span>Now showing {showingBooks.length} of {books.length}</span>
-                    <button onClick={this.ClearQuery} >Show All</button>
-                  </div>
-                )}
+
             </div>
           </div>
           <div className="search-books-results">
@@ -81,4 +69,4 @@ render(){
 }
 }
 
-export default ListBooks;
+export default Search;
