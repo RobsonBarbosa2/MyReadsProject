@@ -4,9 +4,9 @@ import escapeRegExp from 'escape-string-regexp'
 import sortBy from 'sort-by'
 import {Link} from 'react-router-dom'
 import { BrowserRouter, Route } from 'react-router-dom'
+import Book from './Book'
 
 class MyList extends Component {
-
 
 state = {
   query : ''
@@ -14,6 +14,7 @@ state = {
 
 
 render(){
+  console.log(this.props.List )
     return (
       <div>
       <div className="list-books">
@@ -26,13 +27,15 @@ render(){
               <h2 className="bookshelf-title">Currently Reading</h2>
               <div className="bookshelf-books">
                 <ol className="books-grid">
-                  <li>
-
-
-                  </li>
-                  <li>
-
-                  </li>
+                {this.props.List.filter(book => book.shelf === 'currentlyReading')
+                  .map(book => (
+                    <li key={book.id}>
+                      <Book
+                        book={book}
+                      />
+                    </li>
+                  ))
+                }
                 </ol>
               </div>
             </div>
@@ -40,12 +43,15 @@ render(){
               <h2 className="bookshelf-title">Want to Read</h2>
               <div className="bookshelf-books">
                 <ol className="books-grid">
-                  <li>
-
-                  </li>
-                  <li>
-
-                  </li>
+                {this.props.List.filter(book => book.shelf === 'wantToRead')
+                  .map(book => (
+                    <li key={book.id}>
+                      <Book
+                        book={book}
+                      />
+                    </li>
+                  ))
+                }
                 </ol>
               </div>
             </div>
@@ -53,15 +59,15 @@ render(){
               <h2 className="bookshelf-title">Read</h2>
               <div className="bookshelf-books">
                 <ol className="books-grid">
-                  <li>
-
-                  </li>
-                  <li>
-
-                  </li>
-                  <li>
-                  
-                  </li>
+                {this.props.List.filter(book => book.shelf === 'read')
+                  .map(book => (
+                    <li key={book.id}>
+                      <Book
+                        book={book}
+                      />
+                    </li>
+                  ))
+                }
                 </ol>
               </div>
             </div>

@@ -8,7 +8,9 @@ import {  BrowserRouter, Route } from 'react-router-dom'
 import * as BooksAPI from './BooksAPI'
 
 class BooksApp extends React.Component {
-    state = {
+
+
+  state = {
     books: []
   }
 
@@ -16,20 +18,23 @@ class BooksApp extends React.Component {
     BooksAPI.getAll().then((books) => {
       this.setState({ books })
     })
+
   }
 
   render() {
 
     return (
+
       <div className="app">
 
         <Route exact path='/Search' render={() => (
             <Search
-
             />
         )}/>
         <Route exact path='/' render={() => (
-          <MyList/>
+          <MyList
+            List = {this.state.books}
+          />
         )}/>
       </div>
     )
