@@ -18,8 +18,14 @@ class BooksApp extends React.Component {
     BooksAPI.getAll().then((books) => {
       this.setState({ books })
     })
-
   }
+
+    moveShelf = (book, shelf) => {
+        BooksAPI.update(book, shelf)
+        BooksAPI.getAll().then((books) => {
+          this.setState({ books })
+        })
+    }
 
   render() {
 
@@ -34,6 +40,7 @@ class BooksApp extends React.Component {
         <Route exact path='/' render={() => (
           <MyList
             List = {this.state.books}
+            moveShelf={this.moveShelf}
           />
         )}/>
       </div>
