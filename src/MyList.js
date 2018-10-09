@@ -8,7 +8,6 @@ state = {
   query : ''
 }
 
-
 render(){
   const {moveShelf} = this.props
   const {List} = this.props
@@ -77,7 +76,6 @@ render(){
           </div>
         </div>
         <div className="open-search">
-
             <Link
               to="/Search"
               className="add-contact"
@@ -85,7 +83,6 @@ render(){
         </div>
       </div>
       </div>
-
     )
 }
 }

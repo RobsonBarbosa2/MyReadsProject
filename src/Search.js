@@ -1,9 +1,9 @@
 import React, {Component} from 'react'
-
 import {Link} from 'react-router-dom'
-
 import * as BooksAPI from './BooksAPI'
 import Book from './Book'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 class Search extends Component {
 
@@ -28,6 +28,7 @@ ClearQuery = () =>{
           this.setState({resultBooks: resultBooks})
         }else{
           this.setState({resultBooks: []})
+          toast.info('No results found!')
         }
       })
     }else{
@@ -80,7 +81,17 @@ render(){
             </ol>
           </div>
         </div>
-
+        <ToastContainer
+          position="bottom-right"
+          autoClose={5000}
+          hideProgressBar={false}
+          newestOnTop
+          closeOnClick
+          rtl={false}
+          pauseOnVisibilityChange
+          draggable
+          pauseOnHover
+        />
       </div>
 
     )
