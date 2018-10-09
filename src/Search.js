@@ -40,10 +40,8 @@ ClearQuery = () =>{
 render(){
 
     const {query} = this.state
-
     return (
       <div>
-
         <div className="search-books">
           <div className="search-books-bar">
             <Link
@@ -65,6 +63,7 @@ render(){
                 <li key={resultBooks.id}>
                     <Book
                       book={resultBooks}
+                      moveShelf={this.props.moveShelf}
                     />
                 </li>
               ))}
