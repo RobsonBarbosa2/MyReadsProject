@@ -2,7 +2,8 @@ import React, {Component} from 'react';
 
 class Book extends Component {
     render(){
-      let thumb = this.props.book.imageLinks ? this.props.book.imageLinks.thumbnail : '';
+      const {book, shelf} = this.props
+      let thumb = book.imageLinks ? book.imageLinks.thumbnail : '';
 
         return(
           <div className="book">
@@ -10,9 +11,9 @@ class Book extends Component {
               <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url("${thumb}")` }}></div>
               <div className="book-shelf-changer">
                 <select onChange={(event) => this.props.moveShelf(
-                    this.props.book, event.target.value
+                    book, event.target.value
                 )}
-                value={this.props.shelf}
+                value={shelf}
                 >
                   <option value="move" disabled>Move to...</option>
                   <option value="currentlyReading">Currently Reading</option>
@@ -22,8 +23,8 @@ class Book extends Component {
                 </select>
               </div>
             </div>
-            <div className="book-title">{this.props.book.title}</div>
-            <div className="book-authors">{this.props.book.authors}</div>
+            <div className="book-title">{book.title}</div>
+            <div className="book-authors">{book.authors}</div>
           </div>
         );
     }

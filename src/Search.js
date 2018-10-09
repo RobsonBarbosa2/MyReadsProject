@@ -1,9 +1,7 @@
 import React, {Component} from 'react'
-import PropTypes from 'prop-types'
-import escapeRegExp from 'escape-string-regexp'
-import sortBy from 'sort-by'
+
 import {Link} from 'react-router-dom'
-import { BrowserRouter, Route } from 'react-router-dom'
+
 import * as BooksAPI from './BooksAPI'
 import Book from './Book'
 
@@ -40,6 +38,7 @@ ClearQuery = () =>{
 render(){
 
     const {query} = this.state
+    const {moveShelf} = this.props
     return (
       <div>
         <div className="search-books">
@@ -70,7 +69,7 @@ render(){
                       <li key={resultBooks.id}>
                           <Book
                             book={resultBooks}
-                            moveShelf={this.props.moveShelf}
+                            moveShelf={moveShelf}
                             actualShelf="currentlyReading"
                             shelf={shelf}
                           />
