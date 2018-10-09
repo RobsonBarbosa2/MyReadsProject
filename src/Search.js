@@ -24,11 +24,17 @@ ClearQuery = () =>{
 }
 
   getSearchResult = (query) => {
-
+    if(query){
       BooksAPI.search(query).then((resultBooks) => {
-        this.setState({resultBooks: resultBooks})
+        if(!resultBooks.error){
+          this.setState({resultBooks: resultBooks})
+        }else{
+          this.setState({resultBooks: []})
+        }
       })
-
+    }else{
+      this.setState({resultBooks: []})
+    }
   }
 
 render(){
@@ -54,6 +60,7 @@ render(){
           </div>
           <div className="search-books-results">
             <ol className="books-grid">
+
               {this.state.resultBooks.map(resultBooks => (
                 <li key={resultBooks.id}>
                     <Book
