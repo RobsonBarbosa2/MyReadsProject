@@ -59,14 +59,25 @@ render(){
           <div className="search-books-results">
             <ol className="books-grid">
 
-              {this.state.resultBooks.map(resultBooks => (
-                <li key={resultBooks.id}>
-                    <Book
-                      book={resultBooks}
-                      moveShelf={this.props.moveShelf}
-                    />
-                </li>
-              ))}
+              {
+                this.state.resultBooks.map(resultBooks => {
+                    let shelf = "none"
+
+                    this.props.books.map(book => (
+                        book.id === resultBooks.id ? shelf = book.shelf : 'none'
+                    ))
+                    return (
+                      <li key={resultBooks.id}>
+                          <Book
+                            book={resultBooks}
+                            moveShelf={this.props.moveShelf}
+                            actualShelf="currentlyReading"
+                            shelf={shelf}
+                          />
+                      </li>
+                    )
+                })
+              }
             </ol>
           </div>
         </div>
