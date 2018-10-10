@@ -7,10 +7,10 @@ import 'react-toastify/dist/ReactToastify.css';
 
 class Search extends Component {
 
-
 state = {
   query : '',
-  resultBooks: []
+  resultBooks: [],
+  found: ''
 }
 
 updateQuery = (query) => {
@@ -25,9 +25,10 @@ ClearQuery = () =>{
     if(query){
       BooksAPI.search(query).then((resultBooks) => {
         if(!resultBooks.error){
-          this.setState({resultBooks: resultBooks})
+          this.setState({resultBooks: resultBooks, found: 1})
+
         }else{
-          this.setState({resultBooks: []})
+          this.setState({resultBooks: [], found: 0})
           toast.info('No results found!')
         }
       })
@@ -58,7 +59,11 @@ render(){
           </div>
           <div className="search-books-results">
             <ol className="books-grid">
-
+            {(this.state.found === 0) &&
+                 <h2>
+                    No books found. :c
+                 </h2>
+               }
               {
                 this.state.resultBooks.map(resultBooks => {
                     let shelf = "none"
@@ -76,7 +81,8 @@ render(){
                           />
                       </li>
                     )
-                })
+                }
+              )
               }
             </ol>
           </div>
