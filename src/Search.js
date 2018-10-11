@@ -17,7 +17,7 @@ updateQuery = (query) => {
   this.setState({query: query.trim()})
   this.getSearchResult(query);
 }
-ClearQuery = () =>{
+clearQuery = () =>{
   this.setState({query: ''})
 }
 

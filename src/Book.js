@@ -1,6 +1,6 @@
-import React, {Component} from 'react';
+import React, {PureComponent} from 'react';
 
-class Book extends Component {
+class Book extends PureComponent {
     render(){
       const {book, shelf} = this.props
       let thumb = book.imageLinks ? book.imageLinks.thumbnail : '';
