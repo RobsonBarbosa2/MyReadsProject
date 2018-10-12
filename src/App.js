@@ -1,7 +1,7 @@
 import React from 'react'
 import './App.css'
-import Search from './Search'
-import MyList from './MyList'
+import Search from './Pages/Search'
+import MyList from './Pages/MyList'
 import { Route } from 'react-router-dom'
 import * as BooksAPI from './BooksAPI'
 import { ToastContainer, toast } from 'react-toastify';

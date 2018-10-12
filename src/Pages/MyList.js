@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import {Link} from 'react-router-dom'
-import Book from './Components/Book'
-import BookShelf from './Components/BookShelf'
+import Book from '../Components/Book'
+import BookShelf from '../Components/BookShelf'
 
 class MyList extends Component {
 
