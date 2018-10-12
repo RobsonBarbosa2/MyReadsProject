@@ -13,7 +13,7 @@ class Book extends PureComponent {
                 <select onChange={(event) => this.props.moveShelf(
                     book, event.target.value
                 )}
-                value={shelf}
+                value={book.shelf}
                 >
                   <option value="move" disabled>Move to...</option>
                   <option value="currentlyReading">Currently Reading</option>
