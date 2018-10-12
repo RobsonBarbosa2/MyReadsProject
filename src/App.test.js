@@ -1,14 +1,8 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import MyList from './MyList'
-
-/**
- This course is not designed to teach Test Driven Development.
- Feel free to use this file to test your application, but it
- is not required.
-**/
+import App from './App'
 
 it('renders without crashing', () => {
   const div = document.createElement('div')
-  ReactDOM.render(<MyList />, div)
+  ReactDOM.render(<App />, div)
 })
