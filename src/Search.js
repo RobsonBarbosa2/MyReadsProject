@@ -4,6 +4,8 @@ import * as BooksAPI from './BooksAPI'
 import Book from './Book'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { Debounce } from 'react-throttle';
+
 
 class Search extends Component {
 
@@ -14,9 +16,10 @@ state = {
 }
 
 updateQuery = (query) => {
-  this.setState({query: query.trim()})
-  this.getSearchResult(query);
+  this.setState({ query })
+  this.getSearchResult(query)
 }
+
 clearQuery = () =>{
   this.setState({query: ''})
 }
@@ -50,11 +53,13 @@ render(){
               className="close-search"
             >Close</Link>
             <div className="search-books-input-wrapper">
-              <input
-                type="text"
-                placeholder="Search by title or author"
-                value={query}
-                onChange={(event) => this.updateQuery(event.target.value)}/>
+              <Debounce time="400" handler="onChange">
+                <input
+                  type="text"
+                  placeholder="Search by title or author"
+                  value={query}
+                  onChange={(e) => {this.updateQuery(e.target.value)}}/>
+              </Debounce>
             </div>
           </div>
           <div className="search-books-results">
