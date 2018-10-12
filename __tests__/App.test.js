@@ -1,6 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import MyList from './MyList'
+import App from '../App'
 
 /**
  This course is not designed to teach Test Driven Development.
@@ -10,5 +10,5 @@ import MyList from './MyList'
 
 it('renders without crashing', () => {
   const div = document.createElement('div')
-  ReactDOM.render(<MyList />, div)
+  ReactDOM.render(<App />, div)
 })
