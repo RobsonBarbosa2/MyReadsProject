@@ -10,13 +10,12 @@ import { Debounce } from 'react-throttle';
 class Search extends Component {
 
 state = {
-  query : '',
+
   resultBooks: [],
   found: ''
 }
 
 updateQuery = (query) => {
-  this.setState({ query })
   this.getSearchResult(query)
 }
 
@@ -29,14 +28,14 @@ clearQuery = () =>{
       BooksAPI.search(query).then((resultBooks) => {
         if(!resultBooks.error){
           this.setState({resultBooks: resultBooks, found: 1})
-
         }else{
-          this.setState({resultBooks: [], found: 0})
-          toast.info('No results found!')
+
+                this.setState({resultBooks: [], found: 0})
+                toast.info('No results found!')
         }
       })
     }else{
-      this.setState({resultBooks: []})
+      this.setState({resultBooks: [], found: 1})
     }
   }
 
@@ -57,14 +56,14 @@ render(){
                 <input
                   type="text"
                   placeholder="Search by title or author"
-                  value={query}
+
                   onChange={(e) => {this.updateQuery(e.target.value)}}/>
               </Debounce>
             </div>
           </div>
           <div className="search-books-results">
             <ol className="books-grid">
-            {(this.state.found === 0) &&
+            {((this.state.found === 0)) &&
                  <h2>
                     No books found. :c
                  </h2>
